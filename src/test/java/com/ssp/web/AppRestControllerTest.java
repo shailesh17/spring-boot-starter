@@ -1,4 +1,5 @@
 package com.ssp.web;
+
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,15 +16,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.ssp.web.AppRestController;
-
 /**
  * Created by shailesh on 2/4/15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MockServletContext.class)
 @WebAppConfiguration
-public class AppRestControllerTest {
+public class AppRestControllerTest extends AppTestSupport {
 
     private MockMvc mvc;
 
@@ -35,7 +34,7 @@ public class AppRestControllerTest {
     @Test
     public void getHome() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(is("Greetings from Spring Boot!")));
+            .andExpect(status().isOk())
+            .andExpect(content().string(is("Greetings from Spring Boot!")));
     }
 }

@@ -23,6 +23,12 @@ configurations {
   all*.exclude group: 'commons-logging', module: 'commons-logging'
   all*.exclude group: 'log4j', module: 'log4j'
 }
+eclipse {
+	classpath {
+		//customizing the classes output directory:
+		defaultOutputDir = file('target/classes')
+	}
+}
 
 springBoot {
 	mainClass = "com.ssp.web.Application"
@@ -67,14 +73,15 @@ dependencies {
   compile("org.springframework.boot:spring-boot-starter-actuator:1.2.1.RELEASE")
   // end::actuator[]
 
-  // db connection pool
-  compile('org.apache.commons:commons-dbcp2:2.0.1'){
-     exclude group: 'commons-logging'
-     exclude group: 'junit', module:'junit'
-  }
+	// db connection pool
+	compile('org.apache.commons:commons-dbcp2:2.0.1'){
+		exclude group: 'commons-logging'
+		exclude group: 'junit', module:'junit'
+	}
 
-  testCompile("junit:junit")
-  testCompile("org.springframework.boot:spring-boot-starter-test:1.2.1.RELEASE")
+  	// test only
+	testCompile("junit:junit:4.10")
+  	testCompile("org.springframework.boot:spring-boot-starter-test:1.2.1.RELEASE")
 }
 
 task wrapper(type: Wrapper) {

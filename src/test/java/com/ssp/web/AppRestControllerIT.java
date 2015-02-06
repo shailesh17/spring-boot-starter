@@ -1,5 +1,10 @@
 package com.ssp.web;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.net.URL;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,20 +17,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
-import com.ssp.web.Application;
-
-import java.net.URL;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 /**
- * Created by shailesh on 2/4/15. */
-@ RunWith(SpringJUnit4ClassRunner.class)
+ * Created by shailesh on 2/4/15.
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest({"server.port=0"})
-public class AppRestControllerIT {
+@IntegrationTest({ "server.port=0" })
+public class AppRestControllerIT extends AppTestSupport {
 
     @Value("${local.server.port}")
     private int port;
@@ -45,4 +44,3 @@ public class AppRestControllerIT {
         assertThat(response.getBody(), is("Greetings from Spring Boot!"));
     }
 }
-

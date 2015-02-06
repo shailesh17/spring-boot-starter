@@ -1,7 +1,7 @@
 # spring-boot-starter
 Spring Boot starter application
 ########################################################################
-# Project spring-boot
+# Project spring-boot-starter
 ########################################################################
 
 # Building the project

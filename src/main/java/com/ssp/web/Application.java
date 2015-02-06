@@ -60,6 +60,8 @@ public class Application {
         for (String beanName : beanNames) {
             log.info("Found bean: " + beanName);
         }
+
+        log.info("Application started...");
 	}
 	
 	public static void start() {
